@@ -1,0 +1,28 @@
+<div *ngIf="true" class="favourites">
+    <div class="header">
+      <p><span class="remove">6</span> City added as favourite</p>
+      <p class="remove">Remove All</p>
+    </div>
+    <div class="favourites-list">
+      <div class="row">
+        <div class="col1">
+          <p class="place">Udupi, Karnataka</p>
+          <div class="details">
+            <img src="assets/icon_precipitation_info.png" alt="">
+            <p class="degrees">31 <span>&#xb0;c</span></p>
+            <p class="description">Mostly cloudy</p>
+          </div>
+        </div>
+  
+        <div class="icon">
+          <span class="fa fa-heart"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- no records found component-->
+  <div *ngIf="false" class="no-records">
+    <img src="assets/icon_nothing.png" alt="">
+    <p class="no-records-message">No Favourites added</p>
+  </div>
+  

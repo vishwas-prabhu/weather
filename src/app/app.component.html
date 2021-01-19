@@ -1,2 +1,32 @@
-<p class="btn btn-primary">{{title}}</p>
-<router-outlet></router-outlet>
+<div class="container-fluid main">
+  <div class="row navbar">
+    <div class="col-1 col-md-none menu">
+      <span class="fa fa-bars"></span>
+    </div>
+    <div class="col-8 col-md-6">
+      <img src="assets/logo_web.png" alt="">
+    </div>
+    <div class="col-1 col-md-6 col-lg-5">
+      <div class="search">
+        <input class="search-box" type="text" placeholder="Search City">
+        <span class="fa fa-search search-icon"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="md-menu">
+    <div class="links">
+      <a routerLink="home" routerLinkActive="active">HOME</a>
+      <a routerLink="favourites" routerLinkActive="active">FAVOURITE</a>
+      <a routerLink="recent" routerLinkActive="active">RECENT SEARCH</a>
+    </div>
+    <div class="date-time">
+      <span>Wed, 28 Nov 2018 11:35 AM</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

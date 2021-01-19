@@ -1,1 +1,177 @@
 @import 'src/mixins';
+
+.main {
+  padding: 0 5%;
+  height: 100%;
+  background: $background;
+  overflow: hidden;
+
+  .navbar {
+    padding: 2.25rem 0rem;
+  }
+
+  .menu {
+    display: none;
+    color: white;
+    font-size: 1.25rem;
+  }
+
+  .search {
+    width: 100%;
+    position: relative;
+
+    &-box {
+      width: 100%;
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 1rem;
+      letter-spacing: 0;
+      line-height: 19px;
+      padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+      border: 1px solid rgb(255, 255, 255, 0.3);
+      outline: none;
+      border-radius: 3px;
+      background-color: #ffffff4d;
+      opacity: 1;
+
+      &::placeholder {
+        color: whitesmoke;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.25rem;
+    }
+  }
+
+  .md-menu {
+    border-bottom: 1px solid #ffffff4d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 3px;
+
+
+    .links {
+      a {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 13px;
+        letter-spacing: 0;
+        line-height: 15px;
+        padding: 3px 1rem;
+        margin-right: 1rem;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      .active {
+        border-bottom: 2px solid #FFD639;
+        color: #FFD639;
+      }
+
+
+
+    }
+
+    .date-time {
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 16px;
+      text-align: right;
+      margin-right: 0.75rem;
+    }
+  }
+
+  .content {
+    height: calc(100% - 120px - 24px);
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  .main {
+    .navbar {
+      padding-top: 1.5rem;
+    }
+
+    .content {
+      height: calc(100% - 120px - 24px + 2rem);
+    }
+
+
+
+    .menu {
+      display: block;
+    }
+
+    .md-menu {
+      justify-content: center;
+      border: none;
+
+      .links {
+        margin: 0;
+        display: none;
+      }
+
+      .date-time {
+        opacity: 0.6;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        line-height: 15px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: auto;
+      }
+    }
+  }
+
+
+  .search {
+    &-box {
+      display: none;
+    }
+
+    &-icon {
+      top: 0%;
+      transform: translate(0%, 0%);
+    }
+  }
+
+
+  .favorites-list {
+    .row {
+      flex-wrap: row wrap;
+      height: 6rem;
+
+      .place {
+        width: 80%;
+        order: 1;
+      }
+
+      .details {
+        width: 80%;
+        order: 3;
+      }
+
+      .icon {
+        width: 20%;
+        order: 2;
+      }
+    }
+
+  }
+}

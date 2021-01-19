@@ -1,0 +1,57 @@
+<div *ngIf="true" class="home">
+  <div class="temp">
+    <div class="place">
+      <p class="place-text">Udupi, Karnataka</p>
+      <p class="add"><span class="fa fa-heart-o"></span> Add to favourite</p>
+    </div>
+    <div class="details">
+      <img src="assets/icon_mostly_sunny.png" alt="">
+      <div class="c-1">
+        <p class="number">87</p>
+        <div class="unit">
+          <span (click)="changeUnit('cel')" [class.active]="unit === 'cel'">&#xb0;C</span>
+          <span (click)="changeUnit('fer')" [class.active]="unit === 'fer'">&#xb0;F</span>
+        </div>
+      </div>
+      <p class="description">Mostly Sunny</p>
+
+    </div>
+  </div>
+  <div class="footer">
+    <div class="more-details">
+      <img src="assets/icon_temperature_info.png" alt="">
+      <div>
+        <p class="title">Min - Max</p>
+        <p class="value">75&#xb0; - 90&#xb0;</p>
+      </div>
+    </div>
+    <div class="more-details">
+      <img src="assets/icon_precipitation_info.png" alt="">
+      <div>
+        <p class="title">Precipitation</p>
+        <p class="value">0%</p>
+      </div>
+    </div>
+    <div class="more-details">
+      <img src="assets/icon_humidity_info.png" alt="">
+      <div>
+        <p class="title">Humidity</p>
+        <p class="value">47%</p>
+      </div>
+    </div>
+    <div class="more-details">
+      <img src="assets/icon_wind_info.png" alt="">
+      <div>
+        <p class="title">Wind</p>
+        <p class="value">4mph</p>
+      </div>
+    </div>
+    <div class="more-details">
+      <img src="assets/icon_visibility_info.png" alt="">
+      <div>
+        <p class="title">Visibility</p>
+        <p class="value">12mph</p>
+      </div>
+    </div>
+  </div>
+</div>
