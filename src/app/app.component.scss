@@ -5,6 +5,7 @@
   height: 100%;
   background: $background;
   overflow: hidden;
+  position: relative;
 
   .navbar {
     padding: 2.25rem 0rem;
@@ -126,15 +127,7 @@
       }
 
       .date-time {
-        opacity: 0.6;
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 13px;
-        letter-spacing: 1.5px;
-        line-height: 15px;
-        text-align: center;
-        text-transform: uppercase;
-        margin: auto;
+        display: none;
       }
     }
   }

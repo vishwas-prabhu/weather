@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weather';
+  isDrawerOpen = false;
+
+  closeDrawer(data: boolean): void {
+    this.isDrawerOpen = data;
+  }
 }

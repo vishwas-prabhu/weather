@@ -1,1 +1,8 @@
-<p>drawer works!</p>
+<div class="overlay" (click)="close()"></div>
+<div class="drawer" [@openClose]="isOpen ? 'open' : 'close'">
+  <ul (click)="close()">
+    <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="favourites" routerLinkActive="active">Favourites</a></li>
+    <li><a routerLink="recent" routerLinkActive="active">Recent Search</a></li>
+  </ul>
+</div>

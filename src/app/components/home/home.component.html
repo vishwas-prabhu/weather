@@ -1,20 +1,28 @@
-<div *ngIf="true" class="home">
+<div *ngIf="homeData?.name" class="home">
+  <div class="date-time">
+    <span>Wed, 28 Nov 2018 11:35 AM</span>
+  </div>
   <div class="temp">
     <div class="place">
-      <p class="place-text">Udupi, Karnataka</p>
-      <p class="add"><span class="fa fa-heart-o"></span> Add to favourite</p>
+      <p class="place-text">{{homeData?.name}}</p>
+      <p *ngIf="isFavouriteId(homeData?.id)" (click)="toggleFavourites(homeData?.id)" class="add" [class.added]="this.isFavourite">
+        <span class="fa" [class.fa-heart]="this.isFavourite" [class.fa-heart-o]="!isFavourite"></span> 
+        {{isFavourite ? 'Added' : 'Add'}} to favourite</p>
     </div>
     <div class="details">
-      <img src="assets/icon_mostly_sunny.png" alt="">
-      <div class="c-1">
-        <p class="number">87</p>
-        <div class="unit">
-          <span (click)="changeUnit('cel')" [class.active]="unit === 'cel'">&#xb0;C</span>
-          <span (click)="changeUnit('fer')" [class.active]="unit === 'fer'">&#xb0;F</span>
+      <div class="details-disp">
+        <!-- <img src="{{'http://openweathermap.org/img/w/'+homeData?.weather[0].icon+'.png'}}" alt=""> -->
+        <img src="assets/icon_mostly_sunny.png" alt="">
+        <div class="c-1">
+          <p *ngIf="unit === 'cel'" class="number">{{+homeData?.main.temp - 273.15}}</p>
+          <p *ngIf="unit === 'fer'"class="number">{{(+homeData?.main.temp - 273.15) * (9/5) + 32}}</p>
+          <div class="unit">
+            <span (click)="changeUnit('cel')" [class.active]="unit === 'cel'">&#xb0;C</span>
+            <span (click)="changeUnit('fer')" [class.active]="unit === 'fer'">&#xb0;F</span>
+          </div>
         </div>
+        <p class="description">{{homeData?.weather[0].main}}</p>
       </div>
-      <p class="description">Mostly Sunny</p>
-
     </div>
   </div>
   <div class="footer">
@@ -22,35 +30,35 @@
       <img src="assets/icon_temperature_info.png" alt="">
       <div>
         <p class="title">Min - Max</p>
-        <p class="value">75&#xb0; - 90&#xb0;</p>
+        <p class="value">{{+homeData?.main.temp_min - 273.15}}&#xb0;- {{+homeData?.main.temp_max - 273.15}}&#xb0;</p>
       </div>
     </div>
     <div class="more-details">
       <img src="assets/icon_precipitation_info.png" alt="">
       <div>
         <p class="title">Precipitation</p>
-        <p class="value">0%</p>
+        <p class="value">{{(homeData?.main.feels_like - 273.15).toFixed(2)}}%</p>
       </div>
     </div>
     <div class="more-details">
       <img src="assets/icon_humidity_info.png" alt="">
       <div>
         <p class="title">Humidity</p>
-        <p class="value">47%</p>
+        <p class="value">{{homeData?.main.humidity}}%</p>
       </div>
     </div>
     <div class="more-details">
       <img src="assets/icon_wind_info.png" alt="">
       <div>
         <p class="title">Wind</p>
-        <p class="value">4mph</p>
+        <p class="value">{{(homeData?.wind.speed * 2.237).toFixed(2)}} mph</p>
       </div>
     </div>
     <div class="more-details">
       <img src="assets/icon_visibility_info.png" alt="">
       <div>
         <p class="title">Visibility</p>
-        <p class="value">12mph</p>
+        <p class="value">{{homeData?.visibility}} mph</p>
       </div>
     </div>
   </div>

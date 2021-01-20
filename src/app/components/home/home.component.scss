@@ -14,11 +14,15 @@ p {
     width: 0%;
   }
 
+  .date-time {
+    display: none;
+  }
+
   .temp {
-    height: 80%;
+    height: 75%;
     .place {
       margin: 2rem 0 0 1rem;
-      height: 25%;
+      height: auto;
       &-text {
         color: #FFFFFF;
         font-family: Roboto;
@@ -36,17 +40,26 @@ p {
         font-weight: 500;
         letter-spacing: 0;
         line-height: 15px;
+        cursor: pointer;
 
         span {
           font-size: 1.2rem;
           transform: translateY(2px);
         }
       }
+
+      .added {
+        color: #FFE539;
+      }
     }
 
     .details {
       text-align: center;
-      height: 75%;
+      min-height: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 75%;
 
       .c-1 {
         margin: 1rem auto;
@@ -59,6 +72,8 @@ p {
           border-radius: 2px;
           padding: 6px 0 5px 0;
           transform: translateY(-10px);
+          margin-left: 0.5rem;
+          cursor: pointer;
 
           span {
             padding: 6px;
@@ -97,8 +112,6 @@ p {
   }
 
   .footer {
-    // position: absolute;
-    // bottom: 0;
     border-top: 1px solid #ffffff4d;
     height: auto;
     width: 100%;
@@ -107,7 +120,9 @@ p {
     display: flex;
     justify-content: space-around;
 
-    
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
 
     .more-details {
       img {
@@ -146,6 +161,19 @@ p {
 @media screen and (max-width: 767px) {
 
   .home {
+
+    .date-time {
+      display: block;
+      opacity: 0.6;
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      line-height: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: auto;
+    }
 
     .temp {
       .place {

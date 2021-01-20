@@ -1,7 +1,7 @@
 <div class="container-fluid main">
   <div class="row navbar">
     <div class="col-1 col-md-none menu">
-      <span class="fa fa-bars"></span>
+      <span class="fa fa-bars" (click)="isDrawerOpen = !isDrawerOpen"></span>
     </div>
     <div class="col-8 col-md-6">
       <img src="assets/logo_web.png" alt="">
@@ -28,5 +28,5 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
+  <app-drawer appDrawer *ngIf="isDrawerOpen" (closeDrawer)="closeDrawer($event)"></app-drawer>
 </div>
-

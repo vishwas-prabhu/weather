@@ -6,6 +6,8 @@ p {
 }
 
 .favourites {
+  height: 100%;
+
   .header {
     display: flex;
     margin: 1.5rem 1rem 1rem;
@@ -22,20 +24,24 @@ p {
 
     .remove {
       font-weight: 500;
+      cursor: pointer;
     }
   }
 
   &-list {
     height: 90%;
+    overflow-y: auto;
 
     .row {
       width: 100%;
       height: 5rem;
-      background-color: #ffffff33;
+      background-color: #ffffff1a;
       padding: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 1px;
+      transition: 100ms linear all;
 
       .col1 {
         width: 80%;
@@ -46,7 +52,7 @@ p {
 
 
       .place {
-        color: #FFE539;
+        color: white;
         font-family: Roboto;
         font-size: 16px;
         font-weight: 500;
@@ -105,6 +111,14 @@ p {
           transform: translateY(3px);
         }
       }
+
+      &:hover {
+        background-color: #ffffff33;
+
+        .place {
+          color: #FFE539;
+        }
+      }
     }
   }
 }
@@ -130,12 +144,16 @@ p {
 }
 
 @media screen and (max-width: 767px) {
+  .date-time {
+    display: none;
+  }
   .row {
     .col1 {
       flex-direction: column;
 
       .place {
         width: 100%;
+        color: #FFE539;
       }
 
       .details {

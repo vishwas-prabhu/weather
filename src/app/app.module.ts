@@ -8,6 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { RecentComponent } from './components/recent/recent.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
+import { DrawerDirective } from './directives/drawer.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +18,13 @@ import { DrawerComponent } from './components/drawer/drawer.component';
     HomeComponent,
     FavouritesComponent,
     RecentComponent,
-    DrawerComponent
+    DrawerComponent,
+    DrawerDirective,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

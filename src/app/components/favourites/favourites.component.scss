@@ -6,6 +6,8 @@ p {
 }
 
 .favourites {
+  height: 100%;
+
   .header {
     display: flex;
     margin: 1.5rem 1rem 1rem;
@@ -22,11 +24,13 @@ p {
 
     .remove {
       font-weight: 500;
+      cursor: pointer;
     }
   }
 
   &-list {
     height: 90%;
+    overflow-y: auto;
 
     .row {
       width: 100%;
@@ -38,7 +42,6 @@ p {
       align-items: center;
       margin-bottom: 1px;
       transition: 100ms linear all;
-      overflow-y: auto;
 
       .col1 {
         width: 80%;
@@ -111,6 +114,7 @@ p {
 
       &:hover {
         background-color: #ffffff33;
+
         .place {
           color: #FFE539;
         }
@@ -136,6 +140,66 @@ p {
     line-height: 21px;
     margin-top: 1rem;
     text-align: center;
+  }
+}
+
+.no-fav {
+  color: white;
+}
+
+.remove-all {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #00000080;
+
+  .card {
+    background: white;
+    height: auto;
+    width: 35%;
+    margin: auto;
+    position: relative;
+    z-index: 111;
+    top: 50%;
+    transform: translateY(-50%);
+
+    p {
+      margin: 3rem auto;
+      color: #000000;
+      font-family: Roboto;
+      font-size: 15px;
+      letter-spacing: 0;
+      line-height: 18px;
+      text-align: center;
+    }
+
+    .buttons {
+      margin: 0rem auto 2.5rem auto;
+
+      button {
+        border: none;
+        outline: none;
+        padding: 0.5rem 2rem;
+        border-radius: 2px;
+        background-color: white;
+        color: black;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 18px;
+        text-align: center;
+
+        &:hover {
+          background-color: #F76B1C;
+          color: #FFFFFF;
+
+        }
+      }
+    }
+
   }
 }
 
@@ -172,6 +236,26 @@ p {
         .description {
           font-size: 14px;
           line-height: 16px;
+        }
+      }
+    }
+  }
+
+  .remove-all {
+    .card {
+      width: 90%;
+      p {
+        margin: 2.5rem auto;
+      }
+
+      .buttons {
+        margin: 0 0% 0.5rem 0;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          color: #673AB7;
+          display: block;
         }
       }
     }
