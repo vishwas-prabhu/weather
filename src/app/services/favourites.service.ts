@@ -9,24 +9,32 @@ import { StorageService } from './storage.service';
 })
 export class FavouritesService {
 
-  favouritesList: Weather[] | any = [];
+  list: Weather[] | any = [];
 
   constructor(
     private http: HttpClient,
     private storageService: StorageService
   ) { }
 
-  setFavouritesList(): void {
-    this.favouritesList.splice(0, this.favouritesList.length);
-    this.http.get<any>(`https://api.openweathermap.org/data/2.5/group?id=${this.storageService.getFavouritesList()}&appid=fd1aff577261f0d57958b40b645a4145`)
-    .subscribe(
-      (response: any) => {
-        this.favouritesList.push(...response.list);
-      }
-    );
+  setFavouritesList(type: string): void {
+    this.list.splice(0, this.list.length);
+    if (type === 'fav' && this.storageService.getFavouritesList() !== '') {
+      this.http.get<any>(`https://api.openweathermap.org/data/2.5/group?id=${this.storageService.getFavouritesList()}&appid=fd1aff577261f0d57958b40b645a4145`)
+      .subscribe(
+        (response: any) => {
+          this.list.push(...response.list);
+        }
+      );
+    } else if (type === 'rec' && this.storageService.getRecentList() !== '') {
+      this.http.get<any>(`https://api.openweathermap.org/data/2.5/group?id=${this.storageService.getRecentList()}&appid=fd1aff577261f0d57958b40b645a4145`).subscribe(
+        (response: any) => {
+          this.list.push(...response.list);
+        }
+      );
+    }
   }
 
   getFavouritesList(): Observable<any> {
-    return of(this.favouritesList);
+    return of(this.list);
   }
 }

@@ -1,0 +1,55 @@
+.android {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1111;
+    input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 4rem;
+      color: #000000;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #0000001a;
+    }
+
+    ul {
+      li {
+        border-bottom: 1px solid #0000001a;
+        padding: 0.75rem 5% ;
+        list-style: none;
+        &:last-child {
+          border: none;
+        }
+      }
+      
+    }
+}
+
+.back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 52px;
+  z-index: 1113;
+  img {
+    transform: scale(0.75);
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+    .android {
+        display: block;
+    }
+  }

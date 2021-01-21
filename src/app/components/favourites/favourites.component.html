@@ -4,20 +4,18 @@
     <p class="remove" (click)="isDialogOpen = true">Remove All</p>
   </div>
   <div class="favourites-list">
-    <div class="row" *ngFor="let item of data; let i = index">
+    <div class="row" *ngFor="let item of data; let i = index" (click)="navigate(item?.name)">
       <div class="col1">
         <p class="place">{{item?.name}}</p>
         <div class="details">
           <img src="{{'http://openweathermap.org/img/w/'+item?.weather[0].icon+'.png'}}" alt="">
-          <p class="degrees">{{item?.main.temp}} <span>&#xb0;c</span></p>
+          <p class="degrees">{{(+item?.main.temp - 273.15).toFixed(0)}} <span>&#xb0;c</span></p>
           <p class="description">{{item?.weather[0].main}}</p>
         </div>
       </div>
 
       <div class="icon">
         <span (click)="removeFromFavorites(i)" class="fa fa-heart"></span>
-        <!-- <span (click)="removeFromFavorites(i)" class="fa fa-heart" [ngStyle]="{'color': item.favourite ? '': 'white'}"
-          [ngClass]="{'fa-heart-o': !item.favourite}"></span> -->
       </div>
     </div>
   </div>

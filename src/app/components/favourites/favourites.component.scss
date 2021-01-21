@@ -204,6 +204,11 @@ p {
 }
 
 @media screen and (max-width: 767px) {
+  .favourites {
+    .header {
+      margin: 1rem 0 1.25rem 0;
+    }
+  }
   .row {
     .col1 {
       flex-direction: column;

@@ -1,1 +1,10 @@
-<p>search works!</p>
+<!-- Android search -->
+<div class="android" [@openClose]="isOpen ? 'open' : 'close'">
+  <input #searchBox type="text" placeholder="Search for city" (input)="search(searchBox.value)">
+  <ul>
+    <li *ngFor="let item of cities | async" (click)="viewDetailsOfSelectedLocation(item)" routerLink="home">{{item}}</li>
+  </ul>
+  <div class="back-button" (click)="close()">
+    <img src="assets/icon_back_black.png" alt="">
+  </div>
+</div>

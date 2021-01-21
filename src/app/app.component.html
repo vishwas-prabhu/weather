@@ -1,18 +1,28 @@
 <div class="container-fluid main">
-  <div class="row navbar">
+  <div id="navbar" class="row navbar">
     <div class="col-1 col-md-none menu">
-      <span class="fa fa-bars" (click)="isDrawerOpen = !isDrawerOpen"></span>
+      <span id="logo-bars" class="fa fa-bars" (click)="isDrawerOpen = !isDrawerOpen"></span>
+      <span id="logo-left" class="fa fa-arrow-left" routerLink="home"></span>
     </div>
-    <div class="col-8 col-md-6">
-      <img src="assets/logo_web.png" alt="">
+    <div class="col-8 col-md-6 logo-title">
+      <img id="weather-logo" src="assets/logo_web.png" alt="">
+      <span id="title" class="title"></span>
     </div>
     <div class="col-1 col-md-6 col-lg-5">
       <div class="search">
-        <input class="search-box" type="text" placeholder="Search City">
-        <span class="fa fa-search search-icon"></span>
+        <div class="search-box-div">
+          <input #searchBox class="search-box" type="text" placeholder="Search City" (input)="search(searchBox.value)">
+        </div>
+        <span id="search-icon" class="fa fa-search search-icon" (click)="isMobileSearchOpen = true"></span>
+        <div class="search-results">
+          <li *ngFor="let item of cities | async" (click)="viewDetailsOfSelectedLocation(item)" routerLink="home">
+            {{item}}</li>
+        </div>
       </div>
     </div>
   </div>
+
+  <app-search *ngIf="isMobileSearchOpen" (closeSearch)="closeSearchWindow($event)"></app-search>
 
   <div class="md-menu">
     <div class="links">

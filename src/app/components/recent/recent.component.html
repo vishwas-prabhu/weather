@@ -4,18 +4,19 @@
     <p class="remove" (click)="clearAll()">Clear All</p>
   </div>
   <div class="favourites-list">
-    <div class="row" *ngFor="let item of data">
-      <div class="col1">
-        <p class="place">{{item.place}}</p>
+    <div class="row" *ngFor="let item of data; let i = index">
+      <div class="col1" (click)="navigate(item?.name)">
+        <p class="place">{{item?.name}}</p>
         <div class="details">
-          <img src="assets/icon_precipitation_info.png" alt="">
-          <p class="degrees">{{item.temp}} <span>&#xb0;c</span></p>
-          <p class="description">{{item.desc}}</p>
+          <img src="{{'http://openweathermap.org/img/w/'+item?.weather[0].icon+'.png'}}" alt="">
+          <p class="degrees">{{(+item?.main.temp - 273.15).toFixed(0)}} <span>&#xb0;c</span></p>
+          <p class="description">{{item?.weather[0].main}}</p>
         </div>
       </div>
 
-      <div class="icon">
-        <span class="fa fa-heart"></span>
+      <div class="icon" (click)="toggleFavourite(item?.id)" >
+        <span class="fa fa-heart" [ngStyle]="{'color': favList.includes(item?.id) ? '': 'white'}"
+          [ngClass]="{'fa-heart-o': !favList.includes(item?.id)}"></span>
       </div>
     </div>
   </div>
@@ -25,3 +26,6 @@
   <img src="assets/icon_nothing.png" alt="">
   <p class="no-records-message">No Recent Search</p>
 </div>
+
+<!-- <span (click)="removeFromFavorites(i)" class="fa fa-heart" [ngStyle]="{'color': item.favourite ? '': 'white'}"
+          [ngClass]="{'fa-heart-o': !item.favourite}"></span> -->

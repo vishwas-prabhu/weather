@@ -23,10 +23,22 @@ export class HomeComponent implements OnInit {
     this.homeService.homeData.subscribe(
       (response: any) => this.homeData = response
     );
-   }
+  }
 
   ngOnInit(): void {
-    this.homeService.setHomePageData();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: Position) => {
+        if (position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          this.homeService.setHomePageDataUsingCoordinates(lng, lat);
+        }
+      },
+        (error: PositionError) => this.homeService.setHomePageDataUsingCoordinates(74.75, 13.35)
+      );
+    } else {
+      this.homeService.setHomePageDataUsingCoordinates(74.75, 13.35);
+    }
   }
 
   changeUnit(unit: string): void {
@@ -36,6 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   isFavouriteId(id: number): boolean {
+    this.isFavourite = false;
     if (this.storageService.isFavouriteId(id)) {
       this.isFavourite = true;
     }
@@ -49,10 +62,6 @@ export class HomeComponent implements OnInit {
     } else {
       this.storageService.removeFromFavouritesList(id);
     }
-  }
-
-  removeFromFavourites(id: number): void {
-    this.isFavourite = !this.isFavourite;
   }
 
 }

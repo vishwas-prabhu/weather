@@ -7,7 +7,7 @@ export class StorageService {
 
   constructor() { }
 
-  setFavouritesList(key: string, value: any): void {
+  setList(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -18,9 +18,9 @@ export class StorageService {
         return;
       }
       favIdList.push(id);
-      this.setFavouritesList('favList', favIdList);
+      this.setList('favList', favIdList);
     } else {
-      this.setFavouritesList('favList', [id]);
+      this.setList('favList', [id]);
     }
   }
 
@@ -28,7 +28,7 @@ export class StorageService {
     if (localStorage.getItem('favList')) {
       const favIdList: any = JSON.parse(localStorage.getItem('favList') || '[]');
       favIdList.splice(favIdList.indexOf(favIdList.find((item: any) => item === id)), 1);
-      this.setFavouritesList('favList', favIdList);
+      this.setList('favList', favIdList);
     }
   }
 
@@ -55,4 +55,29 @@ export class StorageService {
   removeAllFavourites(): void {
     localStorage.setItem('favList', '[]');
   }
+
+  removeAllRecents(): void {
+    localStorage.setItem('recList', '[]');
+  }
+
+  addToRecentsList(id: number): void {
+    if (localStorage.getItem('recList')) {
+      const recentList: any = JSON.parse(localStorage.getItem('recList') || '[]');
+      if (recentList.includes(id)) {
+        return;
+      }
+      recentList.push(id);
+      this.setList('recList', recentList);
+    } else {
+      this.setList('recList', [id]);
+    }
+  }
+
+  getRecentList(): string | any {
+    if (localStorage.getItem('recList')) {
+      const stri = localStorage.getItem('recList');
+      return stri?.slice(1, stri.length - 1);
+    }
+  }
+
 }

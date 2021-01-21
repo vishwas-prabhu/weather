@@ -14,14 +14,14 @@
         <!-- <img src="{{'http://openweathermap.org/img/w/'+homeData?.weather[0].icon+'.png'}}" alt=""> -->
         <img src="assets/icon_mostly_sunny.png" alt="">
         <div class="c-1">
-          <p *ngIf="unit === 'cel'" class="number">{{+homeData?.main.temp - 273.15}}</p>
-          <p *ngIf="unit === 'fer'"class="number">{{(+homeData?.main.temp - 273.15) * (9/5) + 32}}</p>
+          <p *ngIf="unit === 'cel'" class="number">{{(+homeData?.main.temp - 273.15).toFixed(0)}}</p>
+          <p *ngIf="unit === 'fer'"class="number">{{((+homeData?.main.temp - 273.15) * (9/5) + 32).toFixed(0)}}</p>
           <div class="unit">
             <span (click)="changeUnit('cel')" [class.active]="unit === 'cel'">&#xb0;C</span>
             <span (click)="changeUnit('fer')" [class.active]="unit === 'fer'">&#xb0;F</span>
           </div>
         </div>
-        <p class="description">{{homeData?.weather[0].main}}</p>
+        <p class="description">{{homeData?.weather[0].description}}</p>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
       <img src="assets/icon_temperature_info.png" alt="">
       <div>
         <p class="title">Min - Max</p>
-        <p class="value">{{+homeData?.main.temp_min - 273.15}}&#xb0;- {{+homeData?.main.temp_max - 273.15}}&#xb0;</p>
+        <p class="value">{{(+homeData?.main.temp_min - 273.15).toFixed(0)}}&#xb0;- {{(+homeData?.main.temp_max - 273.15).toFixed(0)}}&#xb0;</p>
       </div>
     </div>
     <div class="more-details">
