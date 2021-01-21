@@ -1,3 +1,5 @@
+@import 'src/mixins';
+
 *,
 p {
   margin: 0;
@@ -20,26 +22,20 @@ p {
 
   .temp {
     height: 75%;
+
     .place {
       margin: 2rem 0 0 1rem;
       height: auto;
+
       &-text {
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 20px;
+        @include setFont(#FFFFFF, 20px, 0, 24px);
         font-weight: 500;
-        letter-spacing: 0;
-        line-height: 24px;
         margin-bottom: 1.2rem;
       }
 
       .add {
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 13px;
+        @include setFont(#FFFFFF, 13px, 0, 15px);
         font-weight: 500;
-        letter-spacing: 0;
-        line-height: 15px;
         cursor: pointer;
 
         span {
@@ -77,11 +73,7 @@ p {
 
           span {
             padding: 6px;
-            color: #FFFFFF;
-            font-family: Roboto;
-            font-size: 16px;
-            letter-spacing: 0;
-            line-height: 19px;
+            @include setFont(#FFFFFF, 16px, 0, 19px);
           }
 
           .active {
@@ -92,20 +84,11 @@ p {
       }
 
       .number {
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 64px;
-        font-weight: 500;
-        letter-spacing: 0;
-        line-height: 64px;
+        @include setFont(#FFFFFF, 64px, 0, 64px);
       }
 
       .description {
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 22px;
-        letter-spacing: 0;
-        line-height: 25px;
+        @include setFont(#FFFFFF, 22px, 0, 25px);
         text-align: center;
       }
     }
@@ -137,39 +120,26 @@ p {
 
       div {
         .title {
-          color: #FFFFFF;
-          font-family: Roboto;
-          font-size: 15px;
-          letter-spacing: 0;
-          line-height: 18px;
+          @include setFont(#FFFFFF, 15px, 0, 18px);
           margin: 0px 0px 0.25rem 0px;
         }
 
         .value {
-          color: #FFFFFF;
-          font-family: Roboto;
-          font-size: 22px;
+          @include setFont(#FFFFFF, 22px, 0, 25px);
           font-weight: 500;
-          letter-spacing: 0;
-          line-height: 25px;
           margin-bottom: 0;
         }
       }
     }
   }
 }
+
 @media screen and (max-width: 767px) {
-
   .home {
-
     .date-time {
       display: block;
       opacity: 0.6;
-      color: #FFFFFF;
-      font-family: Roboto;
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      line-height: 15px;
+      @include setFont(#FFFFFF, 13px, 1.5px, 15px);
       text-align: center;
       text-transform: uppercase;
       margin: auto;
@@ -183,12 +153,10 @@ p {
       }
     }
 
-
     .footer {
       justify-content: start;
       padding-top: 1.5rem;
       padding-bottom: 1rem;
     }
   }
-
 }

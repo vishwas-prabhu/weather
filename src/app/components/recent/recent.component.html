@@ -14,18 +14,16 @@
         </div>
       </div>
 
-      <div class="icon" (click)="toggleFavourite(item?.id)" >
+      <div class="icon" (click)="toggleFavourite(item?.id)">
         <span class="fa fa-heart" [ngStyle]="{'color': favList.includes(item?.id) ? '': 'white'}"
           [ngClass]="{'fa-heart-o': !favList.includes(item?.id)}"></span>
       </div>
     </div>
   </div>
 </div>
+
 <!-- no records found component-->
 <div *ngIf="!data.length" class="no-records">
   <img src="assets/icon_nothing.png" alt="">
   <p class="no-records-message">No Recent Search</p>
 </div>
-
-<!-- <span (click)="removeFromFavorites(i)" class="fa fa-heart" [ngStyle]="{'color': item.favourite ? '': 'white'}"
-          [ngClass]="{'fa-heart-o': !item.favourite}"></span> -->

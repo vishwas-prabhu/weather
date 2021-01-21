@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   unit: string;
   isFavourite: boolean;
   homeData: any;
+  date: any;
 
   constructor(
     public homeService: HomeService,
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.homeService.setHomePageDataUsingCoordinates(74.75, 13.35);
     }
+    this.date = Date.now();
   }
 
   ngAfterViewInit(): void {

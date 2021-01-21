@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'weather';
   isDrawerOpen = false;
   isMobileSearchOpen = false;
+  date: any;
   @ViewChild('searchBox') searchBox!: ElementRef;
   Allcities = [
     'udupi',
@@ -29,17 +30,13 @@ export class AppComponent implements OnInit {
   constructor(
     private homeService: HomeService
   ) {
+    this.date = Date.now();
   }
 
   ngOnInit(): void {
     this.cities = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
       debounceTime(300),
-
-      // ignore new term if same as previous term
       distinctUntilChanged(),
-
-      // switch to new search observable each time the term changes
       switchMap((term: string) => {
         if (term === '') { return of([]); }
         return of(this.Allcities.filter((item: string) => item.includes(term)));

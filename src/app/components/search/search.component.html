@@ -7,4 +7,7 @@
   <div class="back-button" (click)="close()">
     <img src="assets/icon_back_black.png" alt="">
   </div>
+  <div class="clear-button" *ngIf="searchBox.value" (click)="clear()">
+    <img src="assets/icon_clear.png" alt="">
+  </div>
 </div>

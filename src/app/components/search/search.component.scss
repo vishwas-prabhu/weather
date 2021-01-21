@@ -1,3 +1,5 @@
+@import 'src/mixins';
+
 .android {
     display: none;
     position: absolute;
@@ -9,11 +11,8 @@
     z-index: 1111;
     input {
       width: 100%;
-      padding: 1rem 1rem 1rem 4rem;
-      color: #000000;
-      font-family: Roboto;
-      font-size: 14px;
-      letter-spacing: 0;
+      padding: 1rem 3rem 1rem 4rem;
+      @include setFont(#000000, 16px, 0, 20px);
       outline: none;
       border: none;
       border-bottom: 1px solid #0000001a;
@@ -44,6 +43,21 @@
   z-index: 1113;
   img {
     transform: scale(0.75);
+  }
+}
+
+.clear-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 52px;
+  z-index: 1113;
+  img {
+    transform: scale(0.6);
   }
 }
 

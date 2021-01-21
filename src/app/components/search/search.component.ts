@@ -88,4 +88,9 @@ export class SearchComponent implements OnInit {
       this.closeSearch.emit(false);
     }, 100);
   }
+
+  clear(): void {
+    this.searchBox.nativeElement.value = '';
+    this.search('');
+  }
 }
