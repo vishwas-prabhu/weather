@@ -8,7 +8,7 @@
       <div class="col1">
         <p class="place">{{item?.name}}</p>
         <div class="details">
-          <img src="{{'http://openweathermap.org/img/w/'+item?.weather[0].icon+'.png'}}" alt="">
+          <img src="{{'assets/'+item?.weather[0].icon+'.png'}}" alt="">
           <p class="degrees">{{(+item?.main.temp - 273.15).toFixed(0)}} <span>&#xb0;c</span></p>
           <p class="description">{{item?.weather[0].main}}</p>
         </div>

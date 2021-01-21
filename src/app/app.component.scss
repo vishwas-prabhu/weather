@@ -167,6 +167,10 @@
       height: calc(100% - 120px - 24px + 3rem);
     }
 
+    .remove-padding {
+      padding: 0;
+    }
+
     .menu {
       display: block;
     }

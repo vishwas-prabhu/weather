@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Weather } from 'src/app/models/weather.model';
 import { HomeService } from 'src/app/services/home.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -8,7 +8,7 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   unit: string;
   isFavourite: boolean;
@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public homeService: HomeService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private elRef: ElementRef
   ) {
     this.unit = 'cel';
     this.isFavourite = false;
@@ -41,6 +42,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    this.elRef.nativeElement.parentElement.classList.add('remove-padding');
+  }
+
   changeUnit(unit: string): void {
     if (unit !== this.unit) {
       this.unit = unit;
@@ -62,6 +67,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.storageService.removeFromFavouritesList(id);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.elRef.nativeElement.parentElement.classList.remove('remove-padding');
   }
 
 }

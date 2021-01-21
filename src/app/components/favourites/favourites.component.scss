@@ -68,7 +68,8 @@ p {
         align-items: center;
 
         img {
-          height: inherit;
+          height: initial;
+          width: 3rem;
           margin-right: 1.5rem;
         }
 
@@ -225,6 +226,8 @@ p {
 
         img {
           margin-right: 1rem;
+          height: inherit;
+          width: initial;
         }
 
         .degrees {

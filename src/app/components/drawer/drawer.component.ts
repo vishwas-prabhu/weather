@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   trigger,
   state,
@@ -31,7 +31,7 @@ import {
     ]),
   ],
 })
-export class DrawerComponent implements OnInit, OnDestroy {
+export class DrawerComponent implements OnInit {
 
   @Output() closeDrawer: EventEmitter<any> = new EventEmitter<any>();
   isOpen = false;
@@ -48,9 +48,6 @@ export class DrawerComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.closeDrawer.emit(false);
     }, 100);
-  }
-
-  ngOnDestroy(): void {
   }
 
 }

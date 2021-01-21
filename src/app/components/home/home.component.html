@@ -12,7 +12,7 @@
     <div class="details">
       <div class="details-disp">
         <!-- <img src="{{'http://openweathermap.org/img/w/'+homeData?.weather[0].icon+'.png'}}" alt=""> -->
-        <img src="assets/icon_mostly_sunny.png" alt="">
+        <img src="{{'assets/'+homeData?.weather[0].icon+'.png'}}" alt="">
         <div class="c-1">
           <p *ngIf="unit === 'cel'" class="number">{{(+homeData?.main.temp - 273.15).toFixed(0)}}</p>
           <p *ngIf="unit === 'fer'"class="number">{{((+homeData?.main.temp - 273.15) * (9/5) + 32).toFixed(0)}}</p>
