@@ -16,13 +16,9 @@
 
     .title {
       display: none;
-      color: #292F33;
-      font-family: Roboto;
-      font-size: 20px;
+      @include setFont(#292F33, 20px, 0, 24px);
       font-weight: 500;
-      letter-spacing: 0;
-      line-height: 24px;
-      text-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+      text-shadow: 0 2px 2px 0 #00000026;
     }
   }
 
@@ -48,7 +44,6 @@
       z-index: 1115;
       overflow-y: auto;
 
-      // ul {
       li {
         list-style: none;
         border-bottom: 1px solid #0000001a;
@@ -63,19 +58,13 @@
           background-color: #00000013;
         }
       }
-
-      // }
     }
 
     &-box {
       width: 100%;
-      color: #FFFFFF;
-      font-family: Roboto;
-      font-size: 1rem;
-      letter-spacing: 0;
-      line-height: 19px;
+      @include setFont(#FFFFFF, 1rem, 0, 19px);
       padding: 0.8rem 2.5rem 0.8rem 0.8rem;
-      border: 1px solid rgb(255, 255, 255, 0.3);
+      border: 1px solid #ffffff4d;
       outline: none;
       border-radius: 3px;
       background-color: #ffffff4d;
@@ -104,15 +93,10 @@
     justify-content: space-between;
     padding-bottom: 3px;
 
-
     .links {
       a {
         text-decoration: none;
-        color: #FFFFFF;
-        font-family: Roboto;
-        font-size: 13px;
-        letter-spacing: 0;
-        line-height: 15px;
+        @include setFont(#FFFFFF, 13px, 0, 15px);
         padding: 3px 1rem;
         margin-right: 1rem;
 
@@ -125,17 +109,10 @@
         border-bottom: 2px solid #FFD639;
         color: #FFD639;
       }
-
-
-
     }
 
     .date-time {
-      color: #FFFFFF;
-      font-family: Roboto;
-      font-size: 14px;
-      letter-spacing: 0;
-      line-height: 16px;
+      @include setFont(#FFFFFF, 14px, 0, 16px);
       text-align: right;
       margin-right: 0.75rem;
     }
@@ -144,13 +121,9 @@
   .content {
     height: calc(100% - 120px - 24px);
   }
-
 }
 
-
-
 @media screen and (max-width: 767px) {
-
   .main {
     padding: 0;
 

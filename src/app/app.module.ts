@@ -11,6 +11,8 @@ import { DrawerComponent } from './components/drawer/drawer.component';
 import { DrawerDirective } from './directives/drawer.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
+import { CountryNamePipe } from './pipes/country-name.pipe';
+import { ConversionPipe } from './pipes/conversion.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SearchComponent } from './components/search/search.component';
     RecentComponent,
     DrawerComponent,
     DrawerDirective,
-    SearchComponent
+    SearchComponent,
+    CountryNamePipe,
+    ConversionPipe
   ],
   imports: [
     BrowserModule,

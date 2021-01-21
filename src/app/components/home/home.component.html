@@ -4,7 +4,7 @@
   </div>
   <div class="temp">
     <div class="place">
-      <p class="place-text">{{homeData?.name}}</p>
+      <p class="place-text">{{homeData?.name}}, {{homeData?.sys.country | countryName}}</p>
       <p *ngIf="isFavouriteId(homeData?.id)" (click)="toggleFavourites(homeData?.id)" class="add"
         [class.added]="this.isFavourite">
         <span class="fa" [class.fa-heart]="this.isFavourite" [class.fa-heart-o]="!isFavourite"></span>
@@ -14,8 +14,7 @@
       <div class="details-disp">
         <img src="{{'assets/'+homeData?.weather[0].icon+'.png'}}" alt="">
         <div class="c-1">
-          <p *ngIf="unit === 'cel'" class="number">{{(+homeData?.main.temp - 273.15).toFixed(0)}}</p>
-          <p *ngIf="unit === 'fer'" class="number">{{((+homeData?.main.temp - 273.15) * (9/5) + 32).toFixed(0)}}</p>
+          <p class="number">{{homeData?.main.temp | conversion:unit}}</p>
           <div class="unit">
             <span (click)="changeUnit('cel')" [class.active]="unit === 'cel'">&#xb0;C</span>
             <span (click)="changeUnit('fer')" [class.active]="unit === 'fer'">&#xb0;F</span>
@@ -30,8 +29,8 @@
       <img src="assets/icon_temperature_info.png" alt="">
       <div>
         <p class="title">Min - Max</p>
-        <p class="value">{{(+homeData?.main.temp_min - 273.15).toFixed(0)}}&#xb0;-
-          {{(+homeData?.main.temp_max - 273.15).toFixed(0)}}&#xb0;</p>
+        <p class="value">{{homeData?.main.temp_min | conversion:unit}}&#xb0;-
+          {{homeData?.main.temp_max | conversion:unit}}&#xb0;</p>
       </div>
     </div>
     <div class="more-details">
