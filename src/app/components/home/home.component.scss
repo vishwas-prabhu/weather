@@ -46,11 +46,13 @@ p {
       .add {
         @include setFont(#FFFFFF, 13px, 0, 15px);
         font-weight: 500;
+        display: inline-flex;
+        align-items: center;
         cursor: pointer;
 
         span {
           font-size: 1.2rem;
-          transform: translateY(2px);
+          // transform: translateY(2px);
         }
       }
 
@@ -118,6 +120,7 @@ p {
     &::-webkit-scrollbar {
       width: 0.5rem;
     }
+
     &::-webkit-scrollbar-track {
       background-color: black;
     }
@@ -171,7 +174,7 @@ p {
       justify-content: start;
       padding: 1.5rem 5% 1.5rem 5%;
       background-color: #ffffff21;
-      
+
       .more-details {
         &:last-child {
           padding-right: 5%;
@@ -186,7 +189,7 @@ p {
   }
 }
 
-@media screen and (min-width: 768px) and  (max-width: 794px) {
+@media screen and (min-width: 768px) and (max-width: 794px) {
   .home {
     .footer {
       justify-content: flex-start;
@@ -199,6 +202,7 @@ p {
 
     .temp {
       height: 100%;
+
       .details {
         min-height: 60%;
       }
@@ -216,6 +220,7 @@ p {
 
     .temp {
       height: 125%;
+
       .details {
         min-height: 100%;
       }
@@ -233,6 +238,7 @@ p {
 
     .temp {
       height: 200%;
+
       .details {
         min-height: 70%;
       }

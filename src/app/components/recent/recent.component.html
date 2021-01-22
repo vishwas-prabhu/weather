@@ -15,8 +15,11 @@
       </div>
 
       <div class="icon" (click)="toggleFavourite(item?.id)">
-        <span class="fa fa-heart" [ngStyle]="{'color': favList.includes(item?.id) ? '': 'white'}"
-          [ngClass]="{'fa-heart-o': !favList.includes(item?.id)}"></span>
+        <!-- <span class="fa fa-heart" [ngStyle]="{'color': favList.includes(item?.id) ? '': 'white'}"
+          [ngClass]="{'fa-heart-o': !favList.includes(item?.id)}"></span> -->
+          <span class="fa" [ngStyle]="{'color': favList.includes(item?.id) ? '': 'white'}">
+            <mat-icon>{{favList.includes(item?.id) ? 'favorite' : 'favorite_border'}}</mat-icon>
+          </span>
       </div>
     </div>
   </div>

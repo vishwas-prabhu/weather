@@ -87,6 +87,9 @@ p {
       .icon {
         text-align: right;
         width: 20%;
+        cursor: pointer;
+        outline: none;
+        border: none;
 
         span {
           font-size: 1.25rem;

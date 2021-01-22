@@ -7,7 +7,8 @@
       <p class="place-text">{{homeData?.name}}, {{homeData?.sys.country | countryName}}</p>
       <p *ngIf="isFavouriteId(homeData?.id)" (click)="toggleFavourites(homeData?.id)" class="add"
         [class.added]="this.isFavourite">
-        <span class="fa" [class.fa-heart]="this.isFavourite" [class.fa-heart-o]="!isFavourite"></span>
+        <!-- <span class="fa" [class.fa-heart]="this.isFavourite" [class.fa-heart-o]="!isFavourite"><mat-icon>favorite_border</mat-icon></span> -->
+        <span ><mat-icon>{{isFavourite ? 'favorite' : 'favorite_border'}}</mat-icon>&nbsp;</span>
         {{isFavourite ? 'Added' : 'Add'}} to favourite</p>
     </div>
     <div class="details">
