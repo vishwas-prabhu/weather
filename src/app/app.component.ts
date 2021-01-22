@@ -16,13 +16,6 @@ export class AppComponent implements OnInit {
   isMobileSearchOpen = false;
   date: any;
   @ViewChild('searchBox') searchBox!: ElementRef;
-  Allcities = [
-    'udupi',
-    'bangalore',
-    'mysore',
-    'kalladka',
-    'mangalore'
-  ];
 
   cities!: Observable<any>;
   private searchTerms = new Subject<string>();
@@ -39,7 +32,7 @@ export class AppComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => {
         if (term === '') { return of([]); }
-        return of(this.Allcities.filter((item: string) => item.includes(term)));
+        return this.homeService.searchResults(term);
       }),
     );
   }
@@ -51,7 +44,7 @@ export class AppComponent implements OnInit {
   viewDetailsOfSelectedLocation(location: string): void {
     this.searchBox.nativeElement.value = '';
     this.search('');
-    this.homeService.setHomePageData(location);
+    this.homeService.setHomePageData(location, true);
   }
 
   closeDrawer(data: boolean): void {

@@ -50,7 +50,7 @@ p {
 
 
       .place {
-      @include setFont(#FFFFFF, 16px, 0, 19px);
+        @include setFont(#FFFFFF, 16px, 0, 19px);
         font-weight: 500;
         width: 50%;
       }
@@ -68,18 +68,19 @@ p {
         }
 
         .degrees {
-      @include setFont(#FFFFFF, 32px, 0, 38px);
+          @include setFont(#FFFFFF, 32px, 0, 38px);
           font-weight: 500;
           margin-right: 1.25rem;
 
           span {
-      @include setFont(#FFFFFF, 20px, 0, 21px);
+            @include setFont(#FFFFFF, 20px, 0, 21px);
             font-weight: 300;
           }
         }
 
         .description {
-      @include setFont(#FFFFFF, 18px, 0, 21px);
+          @include setFont(#FFFFFF, 18px, 0, 21px);
+          text-transform: capitalize;
         }
       }
 

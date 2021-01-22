@@ -7,21 +7,31 @@ p {
   box-sizing: border-box;
 }
 
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 121111;
+}
+
 .home {
-  height: 100%;
+  height: calc(100% + 1rem);
   position: relative;
   overflow-y: auto;
+  // background-color: rgba(126, 252, 0, 0.322);
 
   &::-webkit-scrollbar {
-    width: 0%;
-  }
-
-  .date-time {
-    display: none;
+    width: 0rem;
   }
 
   .temp {
-    height: 75%;
+    height: 80%;
 
     .place {
       margin: 2rem 0 0 1rem;
@@ -55,7 +65,7 @@ p {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 75%;
+      min-height: 85%;
 
       .c-1 {
         margin: 1rem auto;
@@ -66,7 +76,7 @@ p {
         .unit {
           border: 1px solid #FFFFFF;
           border-radius: 2px;
-          padding: 6px 0 5px 0;
+          padding: 5px 0 4px 0;
           transform: translateY(-10px);
           margin-left: 0.5rem;
           cursor: pointer;
@@ -89,6 +99,7 @@ p {
 
       .description {
         @include setFont(#FFFFFF, 22px, 0, 25px);
+        text-transform: capitalize;
         text-align: center;
       }
     }
@@ -100,11 +111,19 @@ p {
     width: 100%;
     padding: 1.75rem 0rem 2rem 0rem;
     overflow-x: auto;
+    scrollbar-width: none;
     display: flex;
     justify-content: space-around;
 
     &::-webkit-scrollbar {
-      width: 0px;
+      width: 0.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: black;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: white;
     }
 
     .more-details {
@@ -136,27 +155,92 @@ p {
 
 @media screen and (max-width: 767px) {
   .home {
-    .date-time {
-      display: block;
-      opacity: 0.6;
-      @include setFont(#FFFFFF, 13px, 1.5px, 15px);
-      text-align: center;
-      text-transform: uppercase;
-      margin: auto;
-    }
 
     .temp {
       .place {
         margin-left: 0rem;
-        margin-top: 1rem;
+        margin-top: 0rem;
+        padding-top: 1rem;
         text-align: center;
       }
     }
 
     .footer {
+      position: absolute;
+      bottom: 0;
       justify-content: start;
-      padding-top: 1.5rem;
-      padding-bottom: 1rem;
+      padding: 1.5rem 5% 1.5rem 5%;
+      background-color: #ffffff21;
+      
+      .more-details {
+        &:last-child {
+          padding-right: 5%;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and  (max-width: 794px) {
+  .home {
+    .footer {
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media screen and (max-height: 467px) {
+  .home {
+
+    .temp {
+      height: 100%;
+      .details {
+        min-height: 60%;
+      }
+    }
+
+
+    .footer {
+      position: relative;
+    }
+  }
+}
+
+@media screen and (max-height: 357px) {
+  .home {
+
+    .temp {
+      height: 125%;
+      .details {
+        min-height: 100%;
+      }
+    }
+
+
+    .footer {
+      position: relative;
+    }
+  }
+}
+
+@media screen and (max-height: 306px) {
+  .home {
+
+    .temp {
+      height: 200%;
+      .details {
+        min-height: 70%;
+      }
+    }
+
+
+    .footer {
+      position: relative;
     }
   }
 }

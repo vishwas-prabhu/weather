@@ -15,6 +15,7 @@ export class FavouritesComponent implements OnInit, AfterViewInit, OnDestroy {
   isDialogOpen: boolean;
   navbar: any;
   title: any;
+  parentElement: any;
 
   constructor(
     private favouritesService: FavouritesService,
@@ -31,12 +32,14 @@ export class FavouritesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.favouritesService.setFavouritesList('fav');
-    this.navbar = this.elRef.nativeElement.parentElement.parentElement.querySelector('#navbar');
-    this.title = this.elRef.nativeElement.parentElement.parentElement.querySelector('#title');
+    this.parentElement = this.elRef.nativeElement.parentElement.parentElement;
+    this.navbar = this.parentElement.querySelector('#navbar');
+    this.title = this.parentElement.querySelector('#title');
   }
 
   ngAfterViewInit(): void {
     this.navbar.classList.add('custom-class');
+    this.parentElement.classList.add('main-class');
     this.title.innerHTML = 'Favourites';
   }
 
@@ -51,13 +54,14 @@ export class FavouritesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   navigate(name: string): void {
-    this.homeService.setHomePageData(name);
+    this.homeService.setHomePageData(name, false);
     this.router.navigate(['home']);
   }
 
   ngOnDestroy(): void {
     this.title.innerHTML = '';
     this.navbar.classList.remove('custom-class');
+    this.parentElement.classList.remove('main-class');
   }
 
 }

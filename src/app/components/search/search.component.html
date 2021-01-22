@@ -1,13 +1,15 @@
 <!-- Android search -->
 <div class="android" [@openClose]="isOpen ? 'open' : 'close'">
-  <input #searchBox type="text" placeholder="Search for city" (input)="search(searchBox.value)">
+  <div class="input-box">
+    <input #searchBox type="text" placeholder="Search for city" (input)="search(searchBox.value)">
+    <div class="back-button" (click)="close()">
+      <img src="assets/icon_back_black.png" alt="">
+    </div>
+    <div class="clear-button" *ngIf="searchBox.value" (click)="clear()">
+      <img src="assets/icon_clear.png" alt="">
+    </div>
+  </div>
   <ul>
     <li *ngFor="let item of cities | async" (click)="viewDetailsOfSelectedLocation(item)" routerLink="home">{{item}}</li>
   </ul>
-  <div class="back-button" (click)="close()">
-    <img src="assets/icon_back_black.png" alt="">
-  </div>
-  <div class="clear-button" *ngIf="searchBox.value" (click)="clear()">
-    <img src="assets/icon_clear.png" alt="">
-  </div>
 </div>

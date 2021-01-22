@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { CountryNamePipe } from './pipes/country-name.pipe';
 import { ConversionPipe } from './pipes/conversion.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,10 @@ import { ConversionPipe } from './pipes/conversion.pipe';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

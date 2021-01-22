@@ -18,14 +18,14 @@ export class FavouritesService {
 
   setFavouritesList(type: string): void {
     this.list.splice(0, this.list.length);
-    if (type === 'fav' && this.storageService.getFavouritesList() !== '') {
+    if (type === 'fav' && this.storageService.getFavouritesList()) {
       this.http.get<any>(`https://api.openweathermap.org/data/2.5/group?id=${this.storageService.getFavouritesList()}&appid=fd1aff577261f0d57958b40b645a4145`)
       .subscribe(
         (response: any) => {
           this.list.push(...response.list);
         }
       );
-    } else if (type === 'rec' && this.storageService.getRecentList() !== '') {
+    } else if (type === 'rec' && this.storageService.getRecentList()) {
       this.http.get<any>(`https://api.openweathermap.org/data/2.5/group?id=${this.storageService.getRecentList()}&appid=fd1aff577261f0d57958b40b645a4145`).subscribe(
         (response: any) => {
           this.list.push(...response.list);

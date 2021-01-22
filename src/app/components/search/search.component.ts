@@ -42,13 +42,6 @@ export class SearchComponent implements OnInit {
   @Output() closeSearch = new EventEmitter<any>();
   isOpen = false;
   @ViewChild('searchBox') searchBox!: ElementRef;
-  Allcities = [
-    'udupi',
-    'bangalore',
-    'mysore',
-    'kalladka',
-    'mangalore'
-  ];
 
   cities!: Observable<any>;
   private searchTerms = new Subject<string>();
@@ -62,11 +55,11 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.isOpen = true;
     this.cities = this.searchTerms.pipe(
-      debounceTime(1000),
+      debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
         if (term === '') { return of([]); }
-        return of(this.Allcities.filter((item: string) => item.includes(term)));
+        return this.homeService.searchResults(term);
       }),
     );
   }
@@ -79,7 +72,7 @@ export class SearchComponent implements OnInit {
     this.searchBox.nativeElement.value = '';
     this.search('');
     this.close();
-    this.homeService.setHomePageData(location);
+    this.homeService.setHomePageData(location, true);
   }
 
   close(): void {

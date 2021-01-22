@@ -10,7 +10,7 @@
   .navbar {
     padding: 2.25rem 0rem;
 
-    .fa-arrow-left {
+    .arrow-left {
       display: none;
     }
 
@@ -47,7 +47,7 @@
       li {
         list-style: none;
         border-bottom: 1px solid #0000001a;
-        padding: 0.75rem 5%;
+        padding: 0.75rem 1rem;
         list-style: none;
 
         &:last-child {
@@ -151,7 +151,23 @@
     .md-menu {
       justify-content: center;
       border: none;
-      display: none;
+
+      .links {
+        margin: 0;
+        display: none;
+      }
+
+      .date-time {
+        opacity: 0.6;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        line-height: 15px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: auto;
+      }
     }
 
     .search {
@@ -182,10 +198,10 @@
 
     #logo-left {
       display: block;
-      color: black;
       margin-left: 5%;
       border: none;
       outline: none;
+      transform: scale(0.75);
     }
 
     #weather-logo {
@@ -198,6 +214,12 @@
 
     #search-icon {
       color: black;
+    }
+  }
+
+  .main-class {
+    #date-time {
+      display: none;
     }
   }
 }

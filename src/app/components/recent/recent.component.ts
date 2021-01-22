@@ -15,6 +15,7 @@ export class RecentComponent implements OnInit, OnDestroy, AfterViewInit {
   favList: string;
   navbar: any;
   title: any;
+  parentElement: any;
 
   constructor(
     private favouritesService: FavouritesService,
@@ -31,12 +32,14 @@ export class RecentComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.favouritesService.setFavouritesList('rec');
+    this.parentElement = this.elRef.nativeElement.parentElement.parentElement;
     this.favList = this.storageService.getFavouritesList();
     this.navbar = this.elRef.nativeElement.parentElement.parentElement.querySelector('#navbar');
     this.title = this.elRef.nativeElement.parentElement.parentElement.querySelector('#title');
   }
 
   ngAfterViewInit(): void {
+    this.parentElement.classList.add('main-class');
     this.navbar.classList.add('custom-class');
     this.title.innerHTML = 'Recent Search';
   }
@@ -58,11 +61,12 @@ export class RecentComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   navigate(name: string): void {
-    this.homeService.setHomePageData(name);
+    this.homeService.setHomePageData(name, false);
     this.router.navigate(['home']);
   }
 
   ngOnDestroy(): void {
+    this.parentElement.classList.remove('main-class');
     this.title.innerHTML = '';
     this.navbar.classList.remove('custom-class');
   }

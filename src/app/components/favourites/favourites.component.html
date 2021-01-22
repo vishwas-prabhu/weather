@@ -6,11 +6,11 @@
   <div class="favourites-list">
     <div class="row" *ngFor="let item of data; let i = index" (click)="navigate(item?.name)">
       <div class="col1">
-        <p class="place">{{item?.name}}, {{item?.sys.country}}</p>
+        <p class="place">{{item?.name}}, {{item?.sys.country | countryName}}</p>
         <div class="details">
           <img src="{{'assets/'+item?.weather[0].icon+'.png'}}" alt="">
           <p class="degrees">{{item?.main.temp | conversion:'cel'}} <span>&#xb0;c</span></p>
-          <p class="description">{{item?.weather[0].main}}</p>
+          <p class="description">{{item?.weather[0].description}}</p>
         </div>
       </div>
 

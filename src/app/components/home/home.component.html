@@ -1,7 +1,7 @@
+<div class="loading" *ngIf="!homeData?.name">
+  <img src="assets/logo_web.png" alt="">
+</div>
 <div *ngIf="homeData?.name" class="home">
-  <div class="date-time">
-    <span>{{date | date:'EEE, dd MMM yyyy hh:mm aa'}}</span>
-  </div>
   <div class="temp">
     <div class="place">
       <p class="place-text">{{homeData?.name}}, {{homeData?.sys.country | countryName}}</p>
