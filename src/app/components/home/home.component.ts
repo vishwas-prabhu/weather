@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Weather } from 'src/app/models/weather.model';
 import { HomeService } from 'src/app/services/home.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -13,12 +14,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   unit: string;
   isFavourite: boolean;
   homeData: any;
-  date: any;
+  dbEventResult: any;
 
   constructor(
     public homeService: HomeService,
     private storageService: StorageService,
-    private elRef: ElementRef
+    private elRef: ElementRef,
+    private cookie: CookieService
   ) {
     this.unit = 'cel';
     this.isFavourite = false;
@@ -28,8 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.homeService.setHomePageDataUsingCoordinates(74.75, 13.35);
-
+    this.createStore();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         if (position) {
@@ -43,16 +44,48 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.homeService.setHomePageDataUsingCoordinates(74.75, 13.35);
     }
-    this.date = Date.now();
   }
 
   ngAfterViewInit(): void {
     this.elRef.nativeElement.parentElement.classList.add('remove-padding');
+    this.cookie.set('unit', 'vihs', 1);
+  }
+
+  createStore(): any {
+    const db = indexedDB.open('weather', 1);
+    db.onupgradeneeded = (e: any) => {
+      const event = e.target.result;
+      event.createObjectStore('unitStore', { keyPath: 'key' });
+    };
+    db.onsuccess = (e: any) => {
+      this.dbEventResult = e.target.result;
+      this.getUnit();
+    };
+    db.onerror = (e: any) => {
+      console.log('on error');
+    };
+  }
+
+  getUnit(): any {
+    const unitStore = this.dbEventResult.transaction(['unitStore'], 'readonly').objectStore('unitStore').get('unit');
+    unitStore.onsuccess = (ev: any) => {
+      if (ev.target.result?.value) {
+        this.unit = ev.target.result.value;
+      }
+    };
+  }
+
+  changeUnitStore(unit: string): any {
+    const unitStore = this.dbEventResult.transaction(['unitStore'], 'readwrite').objectStore('unitStore');
+    unitStore.get('unit').onsuccess = (ev: any) => {
+      unitStore.put({ key: 'unit', value: unit });
+    };
   }
 
   changeUnit(unit: string): void {
     if (unit !== this.unit) {
       this.unit = unit;
+      this.changeUnitStore(unit);
     }
   }
 

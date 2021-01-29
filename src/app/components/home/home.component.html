@@ -1,6 +1,6 @@
-<div class="loading" *ngIf="!homeData?.name">
+<!-- <div class="loading" *ngIf="!homeData?.name">
   <img src="assets/logo_web.png" alt="">
-</div>
+</div> -->
 <div *ngIf="homeData?.name" class="home">
   <div class="temp">
     <div class="place">
@@ -8,7 +8,9 @@
       <p *ngIf="isFavouriteId(homeData?.id)" (click)="toggleFavourites(homeData?.id)" class="add"
         [class.added]="this.isFavourite">
         <!-- <span class="fa" [class.fa-heart]="this.isFavourite" [class.fa-heart-o]="!isFavourite"><mat-icon>favorite_border</mat-icon></span> -->
-        <span ><mat-icon>{{isFavourite ? 'favorite' : 'favorite_border'}}</mat-icon>&nbsp;</span>
+        <span>
+          <mat-icon>{{isFavourite ? 'favorite' : 'favorite_border'}}</mat-icon>&nbsp;
+        </span>
         {{isFavourite ? 'Added' : 'Add'}} to favourite</p>
     </div>
     <div class="details">
@@ -29,7 +31,7 @@
     <div class="more-details">
       <img src="assets/icon_temperature_info.png" alt="">
       <div>
-        <p class="title">Min - Max</p>
+        <p i18n="min and max|min max display@@min-max" class="title">Min - Max</p>
         <p class="value">{{homeData?.main.temp_min | conversion:unit}}&#xb0;-
           {{homeData?.main.temp_max | conversion:unit}}&#xb0;</p>
       </div>

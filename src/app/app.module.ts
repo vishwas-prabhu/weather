@@ -15,6 +15,9 @@ import { CountryNamePipe } from './pipes/country-name.pipe';
 import { ConversionPipe } from './pipes/conversion.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,13 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
